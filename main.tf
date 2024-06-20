@@ -15,14 +15,14 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "mongo-poc-eks-us-west-2"
+  cluster_name = "mongo-poc-eks-us-east-1"
 }
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "mongo-poc-eks-us-west-2-vpc"
+  name = "mongo-poc-eks-us-east-1-vpc"
 
   cidr = "10.19.0.0/18"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -69,7 +69,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "mongo-uswest2"
+      name = "mongo-useast1"
 
       instance_types = ["t3.xlarge"]
 
