@@ -24,11 +24,11 @@ module "vpc" {
 
   name = "mongo-poc-eks-us-west-2-vpc"
 
-  cidr = "10.0.0.0/16"
+  cidr = "10.18.0.0/18"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
 
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+  private_subnets = ["10.18.1.0/24", "10.18.2.0/24", "10.18.3.0/24"]
+  public_subnets  = ["10.18.4.0/24", "10.18.5.0/24", "10.18.6.0/24"]
 
   enable_nat_gateway   = true
   single_nat_gateway   = true
@@ -69,7 +69,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "mongo-poc-eks-us-west-2-np-1"
+      name = "mongo-poc-eks-us-west-2-node-grp-1"
 
       instance_types = ["t3.xlarge"]
 
