@@ -69,7 +69,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "mongo-poc-eks-us-west-2-node-grp-1"
+      name = "mongo-poc-eks-us-west-2"
 
       instance_types = ["t3.xlarge"]
 
